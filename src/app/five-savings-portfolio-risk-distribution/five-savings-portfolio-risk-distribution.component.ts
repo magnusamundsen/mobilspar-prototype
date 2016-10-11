@@ -12,4 +12,6 @@ export class FiveSavingsPortfolioRiskDistributionComponent implements OnInit {
   ngOnInit() {
   }
 
+  image = "./assets/aksje_dist.png";
+
 }
