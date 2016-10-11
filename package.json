@@ -1,6 +1,7 @@
 {
   "name": "mobilspar-prototype",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "groupId": "no.storebrand.web.clients",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {

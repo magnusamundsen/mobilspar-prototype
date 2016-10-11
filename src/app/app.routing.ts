@@ -1,9 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { routing } from './app.routing';
-
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { OneSelectSavingsGoalComponent } from './one-select-savings-goal/one-select-savings-goal.component';
 import { TwoDefineCustomSavingsGoalComponent } from './two-define-custom-savings-goal/two-define-custom-savings-goal.component';
@@ -16,27 +12,23 @@ import { EightCreditcardInfoComponent } from './eight-creditcard-info/eight-cred
 import { NineCreditcardVerifiedComponent } from './nine-creditcard-verified/nine-creditcard-verified.component';
 import { TenSavingsGoalCreatedReceiptComponent } from './ten-savings-goal-created-receipt/ten-savings-goal-created-receipt.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    OneSelectSavingsGoalComponent,
-    TwoDefineCustomSavingsGoalComponent,
-    ThreeSetSavingsGoalAmountComponent,
-    FourUserRiskComplianceVerificationComponent,
-    FiveSavingsPortfolioRiskDistributionComponent,
-    SixSetupFundaccountComponent,
-    SevenBankIdComponent,
-    EightCreditcardInfoComponent,
-    NineCreditcardVerifiedComponent,
-    TenSavingsGoalCreatedReceiptComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+
+const appRoutes: Routes = [
+  { path: 'one-select-savings-goal', component: OneSelectSavingsGoalComponent },
+  { path: 'two-define-custom-savings-goal', component: TwoDefineCustomSavingsGoalComponent },
+  { path: 'three-set-savings-goal-amount', component: ThreeSetSavingsGoalAmountComponent },
+  { path: 'four-user-risk-compliance-verification', component: FourUserRiskComplianceVerificationComponent },
+  { path: 'five-savings-portfolio-risk-distribution', component: FiveSavingsPortfolioRiskDistributionComponent},
+  { path: 'six-setup-fundaccount', component: SixSetupFundaccountComponent },
+  { path: 'seven-bank-id', component: SevenBankIdComponent },
+  { path: 'eight-creditcard-info', component: EightCreditcardInfoComponent},
+  { path: 'nine-creditcard-verified', component: NineCreditcardVerifiedComponent},
+  { path: 'ten-savings-goal-created-receipt', component: TenSavingsGoalCreatedReceiptComponent},
+  { path: '', component: OneSelectSavingsGoalComponent },
+];
+
+export const appRoutingProviders: any[] = [
+
+];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
