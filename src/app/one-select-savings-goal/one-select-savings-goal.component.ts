@@ -22,10 +22,10 @@ export class OneSelectSavingsGoalComponent implements OnInit {
     
     if ('annet' === this.selectedSavingsGoal) {
       console.log("Annet selected. Open modal for custom input");
+      this.router.navigate(['/three-set-savings-goal-amount']);
+    } else {
+      this.router.navigate(['/two-define-custom-savings-goal']);
     }
-
-    this.router.navigate(['/two-define-custom-savings-goal']);
-
   }
   
 }
