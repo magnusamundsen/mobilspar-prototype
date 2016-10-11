@@ -13,7 +13,6 @@ export class OneSelectSavingsGoalComponent implements OnInit {
 
   ngOnInit() { }
 
-  title = 'Velg sparemål';
   selectedSavingsGoal : string = "Initial value";
 
   setSelectedGoal(goal : string) {
@@ -21,10 +20,9 @@ export class OneSelectSavingsGoalComponent implements OnInit {
     console.log("User selected", this.selectedSavingsGoal);
     
     if ('annet' === this.selectedSavingsGoal) {
-      console.log("Annet selected. Open modal for custom input");
-      this.router.navigate(['/three-set-savings-goal-amount']);
-    } else {
       this.router.navigate(['/two-define-custom-savings-goal']);
+    } else {
+      this.router.navigate(['/three-set-savings-goal-amount']);
     }
   }
   
