@@ -1,0 +1,12 @@
+.image {
+    display:block;
+    position:relative;
+    height: 100%;
+}
+.image img {
+    position: absolute;
+    left: -20px;
+    top: -120px;
+    width: 112%;
+    height: 112%;
+    }
