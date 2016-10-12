@@ -1,5 +1,29 @@
-<h1>
-  {{title}}
-</h1>
-<p>{{subtitle}}</p>
-<button routerLink="/ten-savings-goal-created-receipt">Neste</button>
+<div class="row stbcolor-primary third">
+  <div class="col-xs-12">
+    <p>
+      Basert på din spareprofil og tidshorisont vil jeg anbefale deg følgende fordeling av sparepengene dine...
+    </p>
+  </div>
+</div>
+<div (click)="goToNext()" class="row stbcolor-primary third">
+
+  <div class="row">
+   <img src="{{image}}" style="height:90%;width:90%;margin-left:5%">
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <p>
+        Kortnummer 5313 0600 0000 0000<br>
+        Utløpsdato 08/19<br>
+        Navn Kari Nordmann
+      </p>
+      <h3 style="color:#819f2b;">
+        Gratulerer! Spareavtalen er nå aktivert
+      </h3>
+      <p>
+        Vilkår med 14 dagers angrerettskjema er sendt per e-post. Første sparetrekk er 20. september
+      </p>
+    </div>
+  </div>
+  <button routerLink="/nine-creditcard-verified">Neste</button>
+</div>

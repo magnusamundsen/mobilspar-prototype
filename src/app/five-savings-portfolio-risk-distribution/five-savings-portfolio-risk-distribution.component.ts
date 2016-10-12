@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-five-savings-portfolio-risk-distribution',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiveSavingsPortfolioRiskDistributionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
   }
 
   image = "./assets/aksje_dist.png";
+
+  goToNext() {
+    this.router.navigate(['/six-setup-fundaccount']);
+  }
 
 }

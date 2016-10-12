@@ -5,11 +5,15 @@
     </p>
   </div>
 </div>
-<div class="row stbcolor-primary third">
+<div class="row stbcolor-primary third" style="height:100%;">
 
-  <div class="row">
+  <div (click)="goToNext()" class="row">
    <img src="{{image}}" style="height:90%;width:90%;margin-left:5%">
   </div>
-  <button routerLink="/six-setup-fundaccount">Neste</button>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <button class="stb-btn center-block" style="width:90%;" routerLink="/six-setup-fundaccount">Neste</button>
+    </div>
+  </div>
 </div>
 
