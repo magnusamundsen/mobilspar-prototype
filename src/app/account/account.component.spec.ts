@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { SevenBankIdComponent } from './seven-bank-id.component';
+import { AccountComponent } from './account.component';
 
-describe('Component: SevenBankId', () => {
+describe('Component: Account', () => {
   it('should create an instance', () => {
-    let component = new SevenBankIdComponent();
+    let component = new AccountComponent();
     expect(component).toBeTruthy();
   });
 });

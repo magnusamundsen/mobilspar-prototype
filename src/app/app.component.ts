@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from './shared/user';
+import { Goal } from './shared/goal';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  goals: Goal[];
 }

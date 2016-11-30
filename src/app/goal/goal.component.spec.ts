@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { OneSelectSavingsGoalComponent } from './one-select-savings-goal.component';
+import { SelectSavingsGoalComponent } from './select-savings-goal.component';
 
 describe('Component: OneSelectSavingsGoalComponent', () => {
   it('should create an instance', () => {
-    let component = new OneSelectSavingsGoalComponent();
+    let component = new SelectSavingsGoalComponent();
     expect(component).toBeTruthy();
   });
 });

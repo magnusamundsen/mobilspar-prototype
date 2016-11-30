@@ -1,0 +1,48 @@
+
+<div class="row stbcolor-primary third">
+  <div class="col-xs-12">
+    <h1>
+      Nytt sparemål
+    </h1>
+    <p>
+      Ikke glem å spare til en regnværsdag også ;)
+    </p>
+  </div>
+</div>
+<div class="row stbcolor-secondary sixth">
+
+  <div class="row top-margin-20">
+    <div class="col-xs-10 col-xs-offset-1">
+      <form>
+
+        <div class="form-group">
+          <label for="what">Hva eller hvem sparer du til?</label> 
+          <input type="text" name="what" [(ngModel)]="goal.what" placeholder="" class="text-center"/> 
+        </div>
+
+        <div class="form-group">
+          <label for="howMuch">Hvor mye skal du spare?</label> 
+          <input type="tel" name="howMuch" [(ngModel)]="goal.howMuch" placeholder="" class="text-center"/> 
+        </div>
+
+        <div class="form-group">
+          <label for="when">Når skal du være ferdig?</label> 
+          <input type="date" name="date" #myDate [value]="goal.when | date:'yyyy-MM-dd'" (input)="goal.when=parseDate($event.target.value)" (onchange)="onWhenChanged()" class="text-center"/> 
+        </div>
+
+        <div *ngIf="goal.getHowMuchPerDay > 0" class="form-group text-center">
+            <h3><b>{{goal.getHowMuchPerDay}} kr</b> per dag</h3>
+        </div>
+
+        <div class="form-group">
+          <button type="button" class="stb-btn stb-form is-submit fauxInputFocus" (click)="saveGoal()">OK!</button>
+        </div>
+
+      </form>
+
+      {{goal | json}}
+
+      {{goal.getHowMuchPerDay()}}
+    </div>
+  </div>
+</div>
