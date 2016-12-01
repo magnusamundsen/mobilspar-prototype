@@ -1,0 +1,6 @@
+{
+  "/merchant/register/payment": {
+    "target": "https://netthandel-test.baxlab.no/ebax1",
+    "secure": false
+  }
+}

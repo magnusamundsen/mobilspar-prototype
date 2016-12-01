@@ -2,12 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoalStore } from '../shared/goalStore';
 import { Goal } from '../shared/goal';
+import { UUID } from 'angular2-uuid';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import { Injectable }     from '@angular/core';
+
+declare var bankaxept:any;
 
 @Component({
   selector: 'app-goals',
   templateUrl: './goals.component.html',
   styleUrls: ['./goals.component.css']
 })
+
+@Injectable()
 export class GoalsComponent implements OnInit {
 
   store: GoalStore;
@@ -22,7 +30,7 @@ export class GoalsComponent implements OnInit {
   badgeText: string;
   badgeExplanation: string;
 
-  constructor(store: GoalStore, router: Router) { 
+  constructor(store: GoalStore, router: Router, private http: Http) { 
     this.store = store;
     this.router = router;
     this.goals = [];
@@ -65,6 +73,8 @@ export class GoalsComponent implements OnInit {
     this.selectedGoal = undefined;
     this.showSaveDialog = false;
 
+    this.initiateBankAxeptPayment();
+
     // Badges
     if (!this.badges.firstDeposit && !this.badges.firstDeposit) {
       this.badges.firstDeposit = true;
@@ -86,6 +96,31 @@ export class GoalsComponent implements OnInit {
       this.badgeExplanation = "Endelig i mål! Nå er det bare å tømme sparegrisen og realisere målet! :)";
       this.toggleBadge();
     }
+
+  }
+
+  initiateBankAxeptPayment() {
+    let uuid = UUID.UUID();
+
+    let payload = {
+      "merchantID": "30303",
+      "serviceType": "IMMEDIATE_DELIVERY_OF_GOODS",
+      "product": "ONLINE",
+      "amount": 100,
+      "orderID": uuid,
+      "currency": "NOK",
+      "language": "no"
+    };
+
+    let bodyString = JSON.stringify(payload); // Stringify payload
+    let headers = new Headers({ 'Content-Type': 'application/json',
+                                'Api-Key': "diemenvych3csubsn3l35jofmd544ppssoz21",
+                                'Request-Identifier': uuid });
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+
+    return this.http.post("/merchant/register/payment", bodyString, options) // ...using post request
+                      .subscribe((res:Response) => 
+                      bankaxept.startConsumerTransaction( res.json().paymentToken, '#'));
 
   }
 

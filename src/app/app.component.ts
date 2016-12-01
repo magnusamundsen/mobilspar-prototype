@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from './shared/user';
 import { Goal } from './shared/goal';
 
 @Component({
