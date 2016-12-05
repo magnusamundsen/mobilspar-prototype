@@ -124,13 +124,6 @@ export class GoalsComponent implements OnInit {
 
   }
 
-  createNewGoal() {
-    let goal = new Goal();
-    goal.id = this.goals.length;
-
-    this.router.navigate(['/goal', { id: goal.id }]);
-  }
-
   ngOnInit() {
     this.goals = this.store.getGoals();
     if (this.goals.length > 1 && !this.badges.firstGoal) {
