@@ -73,15 +73,15 @@ export class GoalsComponent implements OnInit {
     this.selectedGoal = undefined;
     this.showSaveDialog = false;
 
-    this.initiateBankAxeptPayment();
+    //this.initiateBankAxeptPayment();
 
     // Badges
-    if (!this.badges.firstDeposit && !this.badges.firstDeposit) {
+    /*if (!this.badges.firstDeposit && !this.badges.firstDeposit) {
       this.badges.firstDeposit = true;
       this.badgeText = "Første innskudd!";
       this.badgeExplanation = "Fortsett slik, så er du snart i mål! :)";
       this.toggleBadge();
-    }
+    }*/
 
     if (this.getPercentage(goal) > 50 && !this.badges.first50percentReached) {
       this.badges.first50percentReached = true;
@@ -106,7 +106,7 @@ export class GoalsComponent implements OnInit {
       "merchantID": "30303",
       "serviceType": "IMMEDIATE_DELIVERY_OF_GOODS",
       "product": "ONLINE",
-      "amount": 100,
+      "amount": 100, // read from user input
       "orderID": uuid,
       "currency": "NOK",
       "language": "no"
