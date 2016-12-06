@@ -10,18 +10,20 @@
   </div>
 </div>
 
-<div *ngIf="showBadge" class="row" style="width: 100%; display: block; float: right; position: absolute; opacity: 100%; z-index: 99999;">
-  <div class="col-xs-12">
+<div *ngIf="showBadge" class="row" style="width: 100%; display: block; float: right; position: absolute; top: 20%; opacity: 100%; z-index: 99999;">
     <div class="stb-box mini wide clickable row">
-      <div class="image column">
-        <img style="height: 64px; width: 64px;" src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678064-star-128.png">
+      <div class="col-xs-2">
+        <div class="image column">
+          <img style="height: 42px; width: 42px; margin-top: 10px; margin-left: -5px;" src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678064-star-128.png">
+        </div>
       </div>
-      <div class="text column">
-        <span class="box-header">{{ badgeText }}</span>
-        <p class="boxy">{{ badgeExplanation }}</p>
+      <div class="col-xs-10">
+        <div class="text column">
+          <span class="box-header">{{ badgeText }}</span>
+          <p class="boxy">{{ badgeExplanation }}</p>
+        </div>
       </div>
     </div>
-  </div>
 </div>
 
 <div class="row">
@@ -58,7 +60,7 @@
           </div>
 
           <div *ngIf="goal.id === selectedGoal && !showSaveDialog" class="row stbcolor-secondary first savingsgoal">
-            <div class="col-xs-4 top-margin-10">
+            <div class="col-xs-4 top-margin-10" style="margin-left: -6px;">
               <span><button type="button" (click)="showSaveDialog = true" class="stb-btn stb-sprite-small plus">Spar</button></span> 
             </div>
 

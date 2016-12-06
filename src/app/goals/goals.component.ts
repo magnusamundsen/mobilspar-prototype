@@ -58,7 +58,7 @@ export class GoalsComponent implements OnInit {
     this.showBadge = true;
     setTimeout(() => {
       this.showBadge = false;
-    }, 3000);
+    }, 4000);
   }
 
   addSavings() {
