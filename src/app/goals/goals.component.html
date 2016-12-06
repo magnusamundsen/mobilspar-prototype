@@ -1,12 +1,12 @@
 <div class="row stbcolor-gray fifth">
-  <div class="col-xs-12 top-margin-10 text-center bottom-margin-0">
+  <div class="col-xs-10 top-margin-10 text-center bottom-margin-0">
     <h1 style="color: white;">
       <span class="glyphicon glyphicon-piggy-bank" style="color: #ffb3b3;"></span>        
-      Dine sparemål ##
+      Dine sparemål
     </h1>
-    <p>
-      
-    </p>
+  </div>
+  <div class="col-xs-2 top-margin-10 text-center bottom-margin-0">
+    <span class="glyphicon glyphicon-cog" style="color: #e6e6e6; margin-top: 6px; font-size: 1.2em;"></span>  
   </div>
 </div>
 
@@ -38,7 +38,7 @@
                   <h1>{{ getPercentage(goal) }}%</h1>
               </div>
           </div>
-          <div *ngIf="goal.id === selectedGoal && showSaveDialog" class="row stbcolor-secondary first">
+          <div *ngIf="goal.id === selectedGoal && showSaveDialog" class="row stbcolor-secondary first savingsgoal">
             <div class="col-xs-12 top-margin-10">
               <div class="row">
                 <div class="col-xs-12">
@@ -57,7 +57,7 @@
             </div>
           </div>
 
-          <div *ngIf="goal.id === selectedGoal && !showSaveDialog" class="row stbcolor-secondary first">
+          <div *ngIf="goal.id === selectedGoal && !showSaveDialog" class="row stbcolor-secondary first savingsgoal">
             <div class="col-xs-4 top-margin-10">
               <span><button type="button" (click)="showSaveDialog = true" class="stb-btn stb-sprite-small plus">Spar</button></span> 
             </div>
