@@ -20,17 +20,24 @@
 
         <div class="form-group">
           <label for="howMuch">Hvor mye skal du spare?</label> 
-          <input type="tel" name="howMuch" [(ngModel)]="goal.howMuch" placeholder="" class="text-center"/> 
+          <input type="tel" name="howMuch" [(ngModel)]="goal.howMuch" (ngModelChange)="onModelChange($event)" placeholder="" class="text-center"/> 
         </div>
 
         <div class="form-group">
           <label for="when">Når skal du være ferdig?</label> 
-          <input type="date" name="date" #myDate [value]="goal.when | date:'yyyy-MM-dd'" (input)="goal.when=parseDate($event.target.value)" (onchange)="onWhenChanged()" class="text-center"/> 
+          <input type="text" name="date" placeholder="" onfocus="(this.type='date')" [(ngModel)]="goal.when" (ngModelChange)="onModelChange($event)" class="text-center"/> 
         </div>
 
-        <div *ngIf="goal.getHowMuchPerDay > 0" class="form-group text-center">
-            <h3><b>{{goal.getHowMuchPerDay}} kr</b> per dag</h3>
+        <div *ngIf="goal.howMuchPerDay > 0" class="form-group text-center text-white" style="margin-bottom: 25px;">
+            <h3><b>{{goal.howMuchPerDay}} kr</b> per dag</h3>
+            <md-slide-toggle name="automaticSaving" [(ngModel)]="goal.automaticSaving" style="margin-bottom: 25px;">
+              Automatisk sparing
+            </md-slide-toggle>
+            <md-slide-toggle name="saveWithOthers" [(ngModel)]="goal.saveWithOthers" class="centered">
+              Spar med andre
+            </md-slide-toggle>
         </div>
+
 
         <div class="form-group">
           <div class="btn-circle stbcolor-secondary third lighter centered text-white" style="font-size: 1.5em;" (click)="saveGoal()">OK</div>

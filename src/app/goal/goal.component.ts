@@ -37,6 +37,31 @@ export class GoalComponent implements OnInit {
     });
 
     moment.locale('no');
+  }    
+
+  onModelChange(event) {
+    console.log(event);
+
+    if (this.goal.howMuch > 0 && 
+        this.goal.when != undefined && 
+        this.goal.when.length != 0 ) {
+
+          console.log("Calculating"); 
+
+          let days = moment(this.goal.when).diff(moment().format('YYYY-MM-DD'), 'days');
+          console.log(days);
+
+          let howMuchPerDay = Math.round(this.goal.howMuch / days);
+          console.log(howMuchPerDay);
+
+          this.goal.howMuchPerDay = howMuchPerDay;
+
+          console.log("getHowMuchPerDay isNaN", isNaN(howMuchPerDay));
+          console.log("getHowMuchPerDay isFinite", isFinite(howMuchPerDay));
+          console.log("getHowMuchPerDay", howMuchPerDay);
+      }
+
+
   }
 
   createNewGoal() {

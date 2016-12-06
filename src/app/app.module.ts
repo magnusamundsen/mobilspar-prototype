@@ -3,15 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
-
-import { MyDatePickerModule } from 'mydatepicker';
-
 import { AppComponent } from './app.component';
 import { GoalComponent } from './goal/goal.component';
 import { AccountComponent } from './account/account.component';
 import { GoalsComponent } from './goals/goals.component';
-
 import { GoalStore } from './shared/goalStore';
+import {MaterialModule} from '@angular/material';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -25,7 +23,7 @@ import { GoalStore } from './shared/goalStore';
     FormsModule,
     HttpModule,
     routing,
-    MyDatePickerModule
+    MaterialModule.forRoot()
   ],
   providers: [GoalStore],
   bootstrap: [AppComponent]
