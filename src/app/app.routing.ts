@@ -1,13 +1,16 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AccountComponent } from './account/account.component';
 import { GoalsComponent } from './goals/goals.component';
 import { GoalComponent } from './goal/goal.component';
-
+import { StatsComponent } from './stats/stats.component';
+import { AchievementsComponent } from './achievements/achievements.component';
+import { ConfigComponent } from './config/config.component';
 
 const appRoutes: Routes = [
-  { path: 'account', component: AccountComponent },
+  { path: 'config', component: ConfigComponent },
+  { path: 'achievements', component: AchievementsComponent },
+  { path: 'stats', component: StatsComponent },
   { path: 'goals', component: GoalsComponent },
   { path: 'goal', component: GoalComponent },
   { path: '', redirectTo: '/goals', pathMatch: 'full'}
