@@ -3,14 +3,14 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as moment from 'moment';
 import { GoalStore } from '../shared/goalStore';
 import { Goal } from '../shared/goal';
-import { MdSnackBar } from '@angular/material';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
+
 
 
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
-  styleUrls: ['./goal.component.css'],
-  providers: [MdSnackBar]
+  styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class GoalComponent implements OnInit {
     private router : Router,
     private route: ActivatedRoute,
     private goalStore : GoalStore,
-    private snackBar: MdSnackBar
+    private toasterService: ToasterService
   ) {}
 
   ngOnInit() { 
@@ -43,16 +43,15 @@ export class GoalComponent implements OnInit {
   }    
 
   onSwitchChange(event) {
-
     if (event === 'automaticSaving') {
       if (this.goal.automaticSaving) {
-          this.snackBar.open('Daglig sparebeløp trekkes automatisk fra konto', 'OK');
+          this.toasterService.pop('success', 'Kommer snart', 'Daglig sparebeløp trekkes automatisk fra konto');
       }
     }
 
     if (event === 'saveWithOthers') {
       if (this.goal.saveWithOthers) {
-          this.snackBar.open('Her kan du velge fra kontaklisten din hvem du vil invitere til sosial sparing. Dere sparer mot samme mål, men eier selv deres egen spareandel', 'OK');
+          this.toasterService.pop('success', 'Kommer snart', 'Her kan du velge fra kontaklisten din hvem du vil invitere til sosial sparing. Dere sparer mot samme mål, men eier selv deres egen spareandel');
       }
     }
   }

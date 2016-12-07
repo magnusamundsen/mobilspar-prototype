@@ -4,7 +4,7 @@ import { GoalStore } from '../shared/goalStore';
 import { Goal } from '../shared/goal';
 import { UUID } from 'angular2-uuid';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import { Injectable }     from '@angular/core';
 
 declare var bankaxept:any;
@@ -29,6 +29,7 @@ export class GoalsComponent implements OnInit {
   showBadge: boolean = false;
   badgeText: string;
   badgeExplanation: string;
+  showStartHerePointer: boolean = true;
 
   constructor(store: GoalStore, router: Router, private http: Http) { 
     this.store = store;
@@ -47,6 +48,7 @@ export class GoalsComponent implements OnInit {
   }
 
   toggleSelectedGoal(id: number) {
+    this.showStartHerePointer = false;
     if (this.selectedGoal === id) {
       this.selectedGoal = undefined;
     } else {
