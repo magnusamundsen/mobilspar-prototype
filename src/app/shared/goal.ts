@@ -8,4 +8,6 @@ export class Goal {
     saved: number = 0;
     howMuchPerDay: number;
     percentage: number = Math.floor((this.saved / this.howMuch) * 100);
+    saveWithOthers: boolean;
+    automaticSaving: boolean;
 }

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as moment from 'moment';
-
 import { GoalStore } from '../shared/goalStore';
 import { Goal } from '../shared/goal';
+import { MdSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
-  styleUrls: ['./goal.component.css']
+  styleUrls: ['./goal.component.css'],
+  providers: [MdSnackBar]
 })
 export class GoalComponent implements OnInit {
 
@@ -21,7 +23,8 @@ export class GoalComponent implements OnInit {
   constructor(
     private router : Router,
     private route: ActivatedRoute,
-    private goalStore : GoalStore
+    private goalStore : GoalStore,
+    private snackBar: MdSnackBar
   ) {}
 
   ngOnInit() { 
@@ -38,6 +41,22 @@ export class GoalComponent implements OnInit {
 
     moment.locale('no');
   }    
+
+  onSwitchChange(event) {
+
+    if (event === 'automaticSaving') {
+      if (this.goal.automaticSaving) {
+          this.snackBar.open('Daglig sparebeløp trekkes automatisk fra konto', 'OK');
+      }
+    }
+
+    if (event === 'saveWithOthers') {
+      if (this.goal.saveWithOthers) {
+          this.snackBar.open('Her kan du velge fra kontaklisten din hvem du vil invitere til sosial sparing. Dere sparer mot samme mål, men eier selv deres egen spareandel', 'OK');
+      }
+    }
+  }
+
 
   onModelChange(event) {
     if (this.goal.howMuch > 0 && 

@@ -36,10 +36,10 @@
         </div>
 
         <div class="form-group text-center text-white" style="margin-bottom: 25px;">
-            <md-slide-toggle name="automaticSaving" [(ngModel)]="goal.automaticSaving" style="margin-bottom: 25px;">
+            <md-slide-toggle name="automaticSaving" [(ngModel)]="goal.automaticSaving" (ngModelChange)="onSwitchChange('automaticSaving')" style="margin-bottom: 25px;">
               Automatisk sparing
             </md-slide-toggle>
-            <md-slide-toggle name="saveWithOthers" [(ngModel)]="goal.saveWithOthers" class="centered">
+            <md-slide-toggle name="saveWithOthers" [(ngModel)]="goal.saveWithOthers" (ngModelChange)="onSwitchChange('saveWithOthers')" class="centered">
               Spar med andre
             </md-slide-toggle>
         </div>
