@@ -12,6 +12,7 @@ import 'hammerjs';
 import { StatsComponent } from './stats/stats.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { ConfigComponent } from './config/config.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ConfigComponent } from './config/config.component';
     GoalComponent,
     StatsComponent,
     AchievementsComponent,
-    ConfigComponent
+    ConfigComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

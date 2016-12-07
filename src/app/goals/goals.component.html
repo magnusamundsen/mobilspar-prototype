@@ -1,12 +1,12 @@
 <div class="row stbcolor-gray fifth">
   <div class="col-xs-10 top-margin-10 text-center bottom-margin-0">
-    <h1 style="color: white;">
+    <h1 style="color: white; margin-left: 50px;">
       <span class="glyphicon glyphicon-piggy-bank" style="color: #ffb3b3;"></span>        
       Dine sparemål
     </h1>
   </div>
   <div class="col-xs-2 top-margin-10 text-center bottom-margin-0">
-    <a routerLink="/config"><span class="glyphicon glyphicon-cog" style="color: #e6e6e6; margin-top: 6px; font-size: 1.2em;"></span></a> 
+    <a routerLink="/info"><span class="glyphicon glyphicon-info-sign" style="color: #e6e6e6; margin-top: 6px; font-size: 1.2em;"></span></a> 
   </div>
 </div>
 
@@ -26,53 +26,102 @@
     </div>
 </div>
 
-<div class="row">
-  <div *ngFor="let goal of goals" class="col-1-4" style="margin-bottom: 0px">
-    <div class="banner">
-      <div class="container" style="width:100%;">
-          <div class="row stbcolor-secondary third lighter savingsgoal" (click)="toggleSelectedGoal(goal.id)" style="padding-top: 15px;">
+<div *ngIf="goals.length == 0">
+  <div class="row">
 
-              <div class="col-xs-8 col-xs-push-4">
-                  <h2>{{ goal.what }}</h2>
-                  <p class="intro">{{ goal.saved }} av {{ goal.howMuch }}kr</p>
-              </div>
-              <div class="col-xs-4 col-xs-pull-8">
-                  <h1>{{ getPercentage(goal) }}%</h1>
-              </div>
-          </div>
-          <div *ngIf="goal.id === selectedGoal && showSaveDialog" class="row stbcolor-secondary first savingsgoal">
-            <div class="col-xs-12 top-margin-10">
-              <div class="row">
-                <div class="col-xs-12">
-                  <label for="howMuch" style="color: white;">Hvor mye skal du spare?</label> 
-                  <input type="tel" name="howMuch" [(ngModel)]="howMuch" placeholder="" class="text-center"/>
+    <div class="col-xs-12 top-margin-20">
+      <h2>Velkommen til BareSpar!</h2>
+
+      <p class="top-margin-20" style="font-size: 1.2em;">
+        <span class="glyphicon glyphicon-plus" style="color: #819f2b;"></span> gir deg muligheten til å opprette et nytt sparemål, velge om det skal være automatisk sparing med daglige trekk, eller
+        om du vil spare sammen med andre for å realisere jenteturen eller fotballturen til Liverpool.
+      </p>
+
+      <p class="top-margin-10" style="font-size: 1.2em;">
+        <span class="glyphicon glyphicon-piggy-bank" style="color: #ffb3b3;"></span> tar deg hit og viser sparemålene dine så
+        fort du har kommet i gang. 
+      </p>
+
+      <p class="top-margin-10" style="font-size: 1.2em;">
+        <span class="glyphicon glyphicon-star" style="color: #fce06d;"></span> viser dine utmerkelser og hvilke
+        du kan spare mer for å nå. Hvem er best i vennegjengen?
+      </p>
+
+      <p class="top-margin-10" style="font-size: 1.2em;">
+        <span class="glyphicon glyphicon-stats" style="color: #b0dfdb;"></span> viser din statistikk. Hvor mye 
+        har du spart, hvordan sparer du og hvordan sammenlignes du med andre? Er du en småsparer eller områdets Onkel Skrue?
+      </p>
+    </div>
+
+  </div>
+
+  <div class="row" style="position: fixed; bottom: 100px; width: 100%; height: 10%; z-index: 99;">
+    <div class="col-xs-12">
+      <p style="font-size: 1.5em; color: white;">Start her</p>
+
+      <span class="glyphicon glyphicon-hand-down animated bounce" style="color: #ffff00; font-size: 4.0em;"></span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="goals.length > 0">
+  <div class="row">
+    <div *ngFor="let goal of goals" class="col-1-4 animated shake" style="margin-bottom: 0px">
+      <div class="banner">
+        <div class="container" style="width:100%;">
+            <div class="row stbcolor-secondary third lighter savingsgoal" (click)="toggleSelectedGoal(goal.id)" style="padding-top: 15px;">
+
+                <div class="col-xs-8 col-xs-push-4">
+                    <h2>{{ goal.what }}</h2>
+                    <p class="intro">{{ goal.saved }} av {{ goal.howMuch }}kr</p>
+                </div>
+                <div class="col-xs-4 col-xs-pull-8">
+                    <h1>{{ getPercentage(goal) }}%</h1>
+                </div>
+            </div>
+            <div *ngIf="goal.id === selectedGoal && showSaveDialog" class="row stbcolor-secondary first savingsgoal">
+              <div class="col-xs-12 top-margin-10">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <label for="howMuch" style="color: white;">Hvor mye skal du spare?</label> 
+                    <input type="tel" name="howMuch" [(ngModel)]="howMuch" placeholder="" class="text-center"/>
+                  </div>
+                </div>
+                <div class="row top-margin-10">
+                  <div class="col-xs-6">
+                    <span><button type="button" (click)="addSavings()" class="stb-btn stb-sprite-small plus">Spar</button></span> 
+                  </div>
+                  <div class="col-xs-6">
+                    <span><button type="button" (click)="showSaveDialog = false" class="stb-btn transparent dark stb-sprite-small link-icon">Avbryt</button></span>
+                  </div>
                 </div>
               </div>
-              <div class="row top-margin-10">
-                <div class="col-xs-6">
-                  <span><button type="button" (click)="addSavings()" class="stb-btn stb-sprite-small plus">Spar</button></span> 
-                </div>
-                <div class="col-xs-6">
-                  <span><button type="button" (click)="showSaveDialog = false" class="stb-btn transparent dark stb-sprite-small link-icon">Avbryt</button></span>
-                </div>
+            </div>
+
+            <div *ngIf="goal.id === selectedGoal && !showSaveDialog" class="row stbcolor-secondary first savingsgoal">
+              <div class="col-xs-4 top-margin-10" style="margin-left: -6px;">
+                <span><button type="button" (click)="showSaveDialog = true" class="stb-btn stb-sprite-small plus">Spar</button></span> 
+              </div>
+
+              <div class="col-xs-4 top-margin-10">
+                <span><button type="button" [routerLink]="['/goal', {id: goal.id}]" class="stb-btn transparent dark stb-sprite-small link-icon">Endre</button></span>
+              </div>
+
+              <div class="col-xs-4 top-margin-10">
+                <span><button type="button" class="stb-btn alarm stb-sprite-small minus">Ta ut</button></span>
               </div>
             </div>
-          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
 
-          <div *ngIf="goal.id === selectedGoal && !showSaveDialog" class="row stbcolor-secondary first savingsgoal">
-            <div class="col-xs-4 top-margin-10" style="margin-left: -6px;">
-              <span><button type="button" (click)="showSaveDialog = true" class="stb-btn stb-sprite-small plus">Spar</button></span> 
-            </div>
-
-            <div class="col-xs-4 top-margin-10">
-              <span><button type="button" [routerLink]="['/goal', {id: goal.id}]" class="stb-btn transparent dark stb-sprite-small link-icon">Endre</button></span>
-            </div>
-
-            <div class="col-xs-4 top-margin-10">
-              <span><button type="button" class="stb-btn alarm stb-sprite-small minus">Ta ut</button></span>
-            </div>
-          </div>
+  <div *ngIf="goals.length == 1">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <span class="glyphicon glyphicon-hand-up animated bounce-up" style="color: #ffff00; font-size: 3.0em;"></span>
+        <p style="font-size: 1.5em; color: white;">Klikk her for å starte sparing</p>
       </div>
-    </div>      
+    </div>
   </div>
 </div>

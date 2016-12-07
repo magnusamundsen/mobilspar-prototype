@@ -6,8 +6,10 @@ import { GoalComponent } from './goal/goal.component';
 import { StatsComponent } from './stats/stats.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { ConfigComponent } from './config/config.component';
+import { InfoComponent } from './info/info.component';
 
 const appRoutes: Routes = [
+  { path: 'info', component: InfoComponent },
   { path: 'config', component: ConfigComponent },
   { path: 'achievements', component: AchievementsComponent },
   { path: 'stats', component: StatsComponent },
