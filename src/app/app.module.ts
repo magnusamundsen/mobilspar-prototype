@@ -14,6 +14,7 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { ConfigComponent } from './config/config.component';
 import { InfoComponent } from './info/info.component';
 import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
+import { SplashComponent } from './splash/splash.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster
     StatsComponent,
     AchievementsComponent,
     ConfigComponent,
-    InfoComponent
+    InfoComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
